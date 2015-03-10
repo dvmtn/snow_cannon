@@ -23,7 +23,7 @@
   var add_stylesheet = function(){
     var link_tag = document.createElement('link');
     link_tag.rel = 'stylesheet';
-    link_tag.href = 'magic_script.min.css';
+    link_tag.href = 'http://dvmtn.github.io/snow_cannon/snow_cannon.min.css';
     document.head.appendChild(link_tag);
   };
 
@@ -31,7 +31,7 @@
     var className = options.theme || 'light';
     var element = document.getElementById(options.element_id);
     var wrapper = document.createElement('div');
-    wrapper.className = 'magic_script ' + className;
+    wrapper.className = 'snow_cannon ' + className;
     element.appendChild(wrapper);
     return wrapper;
   };
@@ -42,7 +42,7 @@
     }).join("\n") + '</ul>';
   };
 
-  window.MagicScript = function(options){
+  window.SnowCannon = function(options){
     var wrapper = build_wrapper(options);
     wrapper.innerHTML = '<p class="loading">Loading</p>';
     get('https://gist.githubusercontent.com/atleastimtrying/aa72080418331c7306dd/raw/371be9b02004ca8ef2d9d9c8071ce1ab4ae816a7/sample.json', function(json_string){
