@@ -1,0 +1,21 @@
+.magic_script{
+  font-family:sans-serif;
+  font-weight:lighter;
+
+  li{
+    list-style:none;
+    border-bottom:1px solid #333;
+  }
+
+  &.dark{
+    background:#333;
+    color:#eee;
+    border-bottom:1px solid #eee;
+  }
+
+  &.light{
+    background:#eee;
+    color:#333;
+    border-bottom:1px solid #333;
+  }
+}
