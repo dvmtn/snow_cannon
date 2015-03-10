@@ -1,16 +1,16 @@
-.magic_script {
+.snow_cannon {
   font-family: sans-serif;
   font-weight: lighter; }
-  .magic_script li {
+  .snow_cannon li {
     list-style: none;
     border-bottom: 1px solid #333; }
-  .magic_script.dark {
+  .snow_cannon.dark {
     background: #333;
     color: #eee;
     border-bottom: 1px solid #eee; }
-  .magic_script.light {
+  .snow_cannon.light {
     background: #eee;
     color: #333;
     border-bottom: 1px solid #333; }
 
-/*# sourceMappingURL=magic_script.min.css.map */
+/*# sourceMappingURL=snow_cannon.min.css.map */
