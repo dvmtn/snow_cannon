@@ -1,0 +1,16 @@
+.magic_script {
+  font-family: sans-serif;
+  font-weight: lighter; }
+  .magic_script li {
+    list-style: none;
+    border-bottom: 1px solid #333; }
+  .magic_script.dark {
+    background: #333;
+    color: #eee;
+    border-bottom: 1px solid #eee; }
+  .magic_script.light {
+    background: #eee;
+    color: #333;
+    border-bottom: 1px solid #333; }
+
+/*# sourceMappingURL=magic_script.min.css.map */
