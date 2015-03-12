@@ -1,55 +1,28 @@
 (function(){
 
-  var get = function(url, complete, error){
-    var request = new XMLHttpRequest();
-    request.open('GET', url, true);
+  var log_time = function(number, time){
+    console.log(number, time);
+  };
 
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        var data = request.responseText;
-        complete(data);
-      }
+  var thing = function(t, callback){
+    return function(e){
+      callback(t, e.data);
     };
-
-    request.onerror = function() {
-      if(error){
-        error(request);
-      }
-    };
-
-    request.send();
   };
 
-  var add_stylesheet = function(){
-    var link_tag = document.createElement('link');
-    link_tag.rel = 'stylesheet';
-    link_tag.href = 'http://dvmtn.github.io/snow_cannon/snow_cannon.min.css';
-    document.head.appendChild(link_tag);
-  };
-
-  var build_wrapper = function(options){
-    var className = options.theme || 'light';
-    var element = document.getElementById(options.element_id);
-    var wrapper = document.createElement('div');
-    wrapper.className = 'snow_cannon ' + className;
-    element.appendChild(wrapper);
-    return wrapper;
-  };
-
-  var json_to_html = function(json){
-    return '<ul>' + json.values.map(function(cat){
-      return '<li>' + cat + '</li>';
-    }).join("\n") + '</ul>';
+  var make_timers = function(amount, callback){
+    
+    for(var i = 0, l = amount; i < l; ++i){
+      var timer = new Worker('timer.js');
+      var t = i;
+      timer.addEventListener('message', thing(t, callback), false);
+      timer.postMessage('start');
+    }
+ 
   };
 
   window.SnowCannon = function(options){
-    var wrapper = build_wrapper(options);
-    wrapper.innerHTML = '<p class="loading">Loading</p>';
-    get('https://gist.githubusercontent.com/atleastimtrying/aa72080418331c7306dd/raw/371be9b02004ca8ef2d9d9c8071ce1ab4ae816a7/sample.json', function(json_string){
-      var json = JSON.parse(json_string);
-      wrapper.innerHTML = json_to_html(json);
-    });
-    add_stylesheet();
+    make_timers(8, log_time);
   };
 
 })();
